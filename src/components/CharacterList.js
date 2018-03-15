@@ -3,22 +3,36 @@ import Character from './Character'
 
 
   const CharacterList = (props) => {
-
-    const characterNodes = props.characters.map((character, index) => {
+    console.log(props.filteredCharacters);
+    if(props.filteredCharacters.length > 0) {
+      const characterNodes = props.filteredCharacters.map((character, index) => {
+        return(
+          <Character
+            key  ={index}
+            name ={character.name}
+            house={character.house}
+          />
+        );
+      })
       return(
-        <Character
-          key={index}
-          name={character.name}
-          house={character.house}
-        />
-      );
-    })
-
-    return(
-      <div>
-        {characterNodes}
-      </div>
-    )
+        <div>
+          {characterNodes}
+        </div>)
+    } else {
+      const characterNodes = props.characters.map((character, index) => {
+        return(
+          <Character
+            key  ={index}
+            name ={character.name}
+            house={character.house}
+          />
+        );
+      })
+      return(
+        <div>
+          {characterNodes}
+        </div>)
+    }
 
 
   }

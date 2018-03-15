@@ -1,5 +1,6 @@
 import React from 'react';
 import CharacterList from '../components/CharacterList'
+import Title from "../components/Title"
 
 class CharacterContainer extends React.Component {
 
@@ -7,8 +8,10 @@ class CharacterContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      characters: []
+      characters: [],
+      filteredCharacters: []
     }
+    this.handleSelectChange = this.handleSelectChange.bind(this)
   }
 
   componentDidMount(){
@@ -24,11 +27,19 @@ class CharacterContainer extends React.Component {
     request.send();
   }
 
+  handleSelectChange(house){
+    const filteredCharacters =  this.state.characters.filter(character => {
+      return house === character.house;
+    })
+    this.setState({filteredCharacters: filteredCharacters})
+  }
+
 
   render() {
     return (
     <div>
-      <CharacterList characters={this.state.characters}/>
+      <Title handleSelectChange={this.handleSelectChange} houses={this.props.houses}/>
+      <CharacterList characters={this.state.characters} filteredCharacters={this.state.filteredCharacters}/>
     </div>
 
     )
