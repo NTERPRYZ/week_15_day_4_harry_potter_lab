@@ -11,6 +11,7 @@ import Character from './Character'
             key  ={index}
             name ={character.name}
             house={character.house}
+            image={character.image}
           />
         );
       })
@@ -25,6 +26,7 @@ import Character from './Character'
             key  ={index}
             name ={character.name}
             house={character.house}
+            image={character.image}
           />
         );
       })
