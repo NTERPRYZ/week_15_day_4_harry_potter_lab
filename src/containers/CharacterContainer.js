@@ -11,6 +11,19 @@ class CharacterContainer extends React.Component {
     }
   }
 
+  componentDidMount(){
+    const url = 'http://hp-api.herokuapp.com/api/characters';
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.addEventListener('load', () => {
+      if(request.status !==200) return;
+      const jsonString = request.responseText;
+      const characterObjects = JSON.parse(jsonString);
+      this.setState({characters: characterObjects});
+    });
+    request.send();
+  }
+
 
   render() {
     return (

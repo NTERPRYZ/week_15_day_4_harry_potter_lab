@@ -2,19 +2,26 @@ import React from 'react'
 import Character from './Character'
 
 
-  const CharacterList = (props) =>{
+  const CharacterList = (props) => {
 
+    const characterNodes = props.characters.map((character, index) => {
+      return(
+        <Character
+          key={index}
+          name={character.name}
+          house={character.house}
+        />
+      );
+    })
 
     return(
-      <Character />
+      <div>
+        {characterNodes}
+      </div>
     )
 
 
   }
-
-
-
-
 
 
 
